@@ -12,6 +12,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.control.ComboBox;
+import javafx.collections.FXCollections;
+
 
 public class MainMenu extends Application implements EventHandler<ActionEvent> {
     
@@ -71,7 +74,17 @@ public class MainMenu extends Application implements EventHandler<ActionEvent> {
         detailsPane.add(storeAddressValue, 1, 1);
         detailsPane.add(productsLabel, 0, 2);
         pane.add(detailsPane, 0, 3, 4, 1);
-
+        ComboBox<Integer> itemsPerPage = new ComboBox<>(FXCollections.observableArrayList(5, 7, 10));
+        itemsPerPage.setValue(10); // Default value
+        itemsPerPage.setOnAction(event -> {
+            int batchSize = itemsPerPage.getValue();
+            pane.getChildren().remove(productList);
+            productList = new ProductList(mainStore, "(.*)",batchSize);
+            pane.add(productList, 0, 6, 5, 1);
+        });        
+        pane.add(new Label("Items per page:"), 3, 1);
+        pane.add(itemsPerPage, 4, 1);
+        
 
         // Product List
         GridPane headerPane = new GridPane();
@@ -89,7 +102,9 @@ public class MainMenu extends Application implements EventHandler<ActionEvent> {
         headerPane.add(actLabel, 8, 0, 2, 1);
         pane.add(headerPane, 0, 5, 8, 1);
 
-        productList = new ProductList(mainStore, "(.*)");
+        productList = new ProductList(mainStore, "(.*)",10);
+     
+        
         pane.add(productList, 0, 6, 5, 1);
 
         Scene scene = new Scene(pane, 700, 700);

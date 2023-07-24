@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -6,6 +7,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class SearchPage extends Application {
@@ -13,6 +15,7 @@ public class SearchPage extends Application {
     private String text;
     private Label label, title;
     private Button backButton;
+    private ProductList productList;
 
     SearchPage(Store mainStore, String text) {
         this.mainStore = mainStore;
@@ -32,6 +35,17 @@ public class SearchPage extends Application {
         label = new Label(text);
         pane.add(label, 0, 1);
 
+        ComboBox<Integer> itemsPerPage = new ComboBox<>(FXCollections.observableArrayList(5, 10, 15));
+        itemsPerPage.setValue(10); // Default value
+        itemsPerPage.setOnAction(event -> {
+            int batchSize = itemsPerPage.getValue();
+            pane.getChildren().remove(productList);
+            productList = new ProductList(mainStore, "(.*)",batchSize);
+            pane.add(productList, 0, 6, 5, 1);
+        });        
+        pane.add(new Label("Items per page:"), 3, 1);
+        pane.add(itemsPerPage, 4, 1);
+
         GridPane headerPane = new GridPane();
         headerPane.setVgap(10);
         headerPane.setHgap(10);
@@ -47,8 +61,8 @@ public class SearchPage extends Application {
         headerPane.add(actLabel, 8, 0, 2, 1);
         pane.add(headerPane, 0, 2, 8, 1);
 
-        ProductList list = new ProductList(mainStore, "(.*)"+text+"(.*)");
-        pane.add(list, 0, 3);
+        productList= new ProductList(mainStore, "(.*)"+text+"(.*)",10);
+        pane.add(productList, 0, 3);
 
         backButton = new Button("Back");
         backButton.setOnAction(new EventHandler<ActionEvent>() {

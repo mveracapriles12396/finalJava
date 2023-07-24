@@ -14,13 +14,14 @@ public class ProductList extends GridPane {
     private int startIndex = 0;
     private int batchSize = 10; // Display 10 products per page
 
-    public ProductList(Store mainStore, String regularExp) {
+    public ProductList(Store mainStore, String regularExp, int batchSize) {
         this.productList = mainStore.getProducts();
         this.mainStore = mainStore;
-
+        this.batchSize = batchSize;
+    
         setVgap(10);
         setHgap(10);
-
+    
         refreshProductList(regularExp);
     }
 
@@ -30,7 +31,14 @@ public class ProductList extends GridPane {
 
         int endIndex = Math.min(startIndex + batchSize, productList.size());
         int displayedProducts = 0;
-        int matchingProducts = 0;
+
+        int totalOfProducts = 0;
+        for (Product product : productList) {
+            if (product.getName().matches(regularExp)){
+                totalOfProducts++;
+            }
+        }
+        
 
         if (productList.size() != 0) {
             for (int i = startIndex; i < endIndex; i++) {
@@ -84,7 +92,6 @@ public class ProductList extends GridPane {
                     });
                     
                     displayedProducts++;
-                    matchingProducts++;
                 }
             }
         } 
@@ -109,7 +116,8 @@ public class ProductList extends GridPane {
         });
         add(nextButton, 1, displayedProducts + 1);
 
-        Label totalProductsLabel = new Label("Results:" + matchingProducts);
+        
+        Label totalProductsLabel = new Label("Total:" + totalOfProducts);
         add(totalProductsLabel, 3, displayedProducts + 1, 2, 1);
     }
 }
