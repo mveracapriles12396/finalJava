@@ -21,6 +21,10 @@ public class LogIn extends Application implements EventHandler<ActionEvent>{
     private Button create, signIn;
     private Label userLabel, userPassword, title;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Final Project");
