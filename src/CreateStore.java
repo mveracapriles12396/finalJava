@@ -1,3 +1,15 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,6 +28,7 @@ import javafx.scene.control.Alert;
 
 public class CreateStore extends Application implements EventHandler<ActionEvent> {
 
+    // Declare variables
     private Label nameLabel, passwordLabel, addressLabel;
     private TextField nameField, addressField;
     private PasswordField passwordField;

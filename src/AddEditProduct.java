@@ -1,3 +1,14 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
 import java.util.Optional;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,6 +24,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class AddEditProduct extends Application {
+    // Declare variables
     private Button backButton, addButton;
     private TextField name, cost, price, qty, description, condition;
     private Label detail, nameLabel, costLabel, prLabel, qLabel, dLabel, cLabel;
@@ -22,9 +34,12 @@ public class AddEditProduct extends Application {
     private String buttonText = "Add";
     private int index;
 
+    // With this constructor, we add a new product to the inventory
     public AddEditProduct(Store newStore){
         this.newStore = newStore;
     }
+
+    // With this constructor, we edit an existing product
     public AddEditProduct(Store newStore, Product product,int index) {
             this.newStore = newStore;
             this.product = product;
@@ -138,6 +153,8 @@ public class AddEditProduct extends Application {
         primaryStage.setTitle("Add/Edit Product");
         primaryStage.show();
     }
+
+    // display error message
     public void error(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);
@@ -145,6 +162,7 @@ public class AddEditProduct extends Application {
        
     }
 
+    // display success message
     public void succes(String message){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Congratulations!");

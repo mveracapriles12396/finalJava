@@ -1,8 +1,22 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Store implements FileDataManager, Serializable {
+    
+    // Declare variables
     private ArrayList<Product> products;
     private String storeName, password, address;
 
@@ -13,18 +27,7 @@ public class Store implements FileDataManager, Serializable {
         this.products = new ArrayList<>(Arrays.asList(products));
     }
 
-    public void editProduct(int index,Product product) throws Exception {
-        products.set(index, product);
-    }
-
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
-    public void removeProduct(int i) {
-        products.remove(i);
-    }
-
+    // getters and setters
     public ArrayList<Product> getProducts() {
         return products;
     }
@@ -60,7 +63,26 @@ public class Store implements FileDataManager, Serializable {
     public int getNumberOfProducts() {
         return products.size();
     }
+    //
+
     
+    // this will be use to edit an existing product
+    public void editProduct(int index,Product product) throws Exception {
+        products.set(index, product);
+    }
+
+    // this will be use to add a new product
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+     // this will be use to delete products
+    public void removeProduct(int i) {
+        products.remove(i);
+    }
+    
+    // This checks if the store already exists; if not, it creates a new one.
+
     public static void createdStore(Store newStore) throws Exception {
         Store[] stores = (Store[]) FileDataManager.getData("store.dat");
         if (stores == null) {
@@ -92,6 +114,7 @@ public class Store implements FileDataManager, Serializable {
     }
 
 
+    // this is use to save the changes on the store
     public static void saveChanges(Store store) throws Exception {
         Store[] stores= (Store[]) FileDataManager.getData("store.dat");
         for (int i = 0; i < stores.length; i++) {

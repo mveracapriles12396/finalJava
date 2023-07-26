@@ -1,3 +1,15 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,15 +28,17 @@ import javafx.stage.Stage;
 
 public class LogIn extends Application implements EventHandler<ActionEvent>{
 
+    // Declare variables
     private TextField storeName;
     private PasswordField password;
     private Button create, signIn;
     private Label userLabel, userPassword, title;
 
+    // launch the application
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Final Project");
@@ -77,8 +91,10 @@ public class LogIn extends Application implements EventHandler<ActionEvent>{
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == signIn) {
+            // get the values of the fields
             String finalName = storeName.getText();
             String finalPassword = password.getText();
+            // check for the inputs values
             if(finalName.length()==0 || finalPassword.length()==0){
                 error("The fields are empty");
                 return;
@@ -104,6 +120,7 @@ public class LogIn extends Application implements EventHandler<ActionEvent>{
             createStore.start(createStoreStage);            
         }
     }
+    // error message
     public static void error(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);

@@ -1,3 +1,15 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -11,6 +23,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class SearchPage extends Application {
+    // Declare variables
     private Store mainStore;
     private String text;
     private Label label, title;
@@ -46,6 +59,7 @@ public class SearchPage extends Application {
         pane.add(new Label("Items per page:"), 3, 1);
         pane.add(itemsPerPage, 4, 1);
 
+
         GridPane headerPane = new GridPane();
         headerPane.setVgap(10);
         headerPane.setHgap(10);
@@ -61,6 +75,7 @@ public class SearchPage extends Application {
         headerPane.add(actLabel, 8, 0, 2, 1);
         pane.add(headerPane, 0, 2, 8, 1);
 
+        // product list
         productList= new ProductList(mainStore, "(.*)"+text+"(.*)",10);
         pane.add(productList, 0, 3);
 

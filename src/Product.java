@@ -1,7 +1,20 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import java.io.Serializable;
 
 public class Product implements Serializable {
 
+	// Declare variables
 	private int qty;
 	private String name;
 	private double cost, price;
@@ -16,6 +29,7 @@ public class Product implements Serializable {
         this.condition = condition;
 	}
 
+	// getters and setters
 	public String getName() {
 		return this.name;
 	}
@@ -58,6 +72,7 @@ public class Product implements Serializable {
 		this.condition = condition;
 	}
 
+	// toString 
 	@Override
 	public String toString() {
 		return String.format("Product name: %s%nCost: %.2f%nPrice: %.2f%nQuantity: %d%nDescription: %s%nCondition: %s%n",

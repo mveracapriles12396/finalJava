@@ -1,3 +1,15 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import javafx.scene.control.TextField;
 import java.util.Optional;
 import javafx.application.Application;
@@ -17,7 +29,7 @@ import javafx.collections.FXCollections;
 
 
 public class MainMenu extends Application implements EventHandler<ActionEvent> {
-    
+    // Declare variables
     private Button addButton, saveChanges, search;
     private Label mainWelcome, searchLabel;
     private TextField searchField;

@@ -1,3 +1,15 @@
+/**
+ * Final Project
+ * Group:
+ * 1. Priyanka, Priyanka,991676014
+ * 2. Virk, Sukhanparteek kaur, 991712335
+ * 3. Vera, Moises, 991716524
+ * @author Moises Vera
+ * @version 1.0
+ * @since 2023-07-26
+ */
+
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -9,10 +21,11 @@ import java.util.Optional;
 
 public class ProductList extends GridPane {
 
+    // Declare variables
     private ArrayList<Product> productList;
     private Store mainStore;
     private int startIndex = 0;
-    private int batchSize = 10; // Display 10 products per page
+    private int batchSize = 10; // Display 10 products per page default value
 
     public ProductList(Store mainStore, String regularExp, int batchSize) {
         this.productList = mainStore.getProducts();
